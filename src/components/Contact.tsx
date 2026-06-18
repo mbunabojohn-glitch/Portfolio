@@ -8,8 +8,7 @@ import emailjs from "@emailjs/browser";
 // 2. Create a template with variables: {{from_name}}, {{from_email}}, {{message}}
 //    → copy Template ID
 const EMAILJS_SERVICE_ID = "service_nk87db8";
-const EMAILJS_TEMPLATE_ID = "template_2ue6fi8";
-// ───────────────────────────────────────────────────────────────────────────
+const EMAILJS_TEMPLATE_ID = "template_9un0b8a";// ───────────────────────────────────────────────────────────────────────────
 
 const SOCIALS = [
   { label: "GitHub", url: "https://github.com/mbunabojohn-glitch", icon: "github", display: "GitHub" },
@@ -32,6 +31,11 @@ export default function Contact() {
     setStatus("sending");
 
     try {
+      console.log("Sending with:", {
+        service: EMAILJS_SERVICE_ID,
+        template: EMAILJS_TEMPLATE_ID,
+        form,
+      });
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
