@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
     description:
       "Automated MT5 trading platform executing Fibonacci pullback strategies on EURUSD, BTCUSD, and XAUUSD. Private beta, friends-only testing before any commercial phase.",
     tech: ["MT5", "React", "Node.js"],
-    liveUrl: "#",
+    liveUrl: "https://pivot-grid-jjjz.vercel.app/",
     codeUrl: "https://github.com/mbunabojohn-glitch",
     image: "/pivotgrid.png",
     status: "building",
