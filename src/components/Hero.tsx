@@ -48,7 +48,47 @@ export default function Hero({ setActive }: HeroProps) {
         style={{ y }}
         className="relative z-10 max-w-6xl mx-auto px-6 w-full pt-28 pb-16"
       >
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* ── Photo / Avatar ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+            className="flex justify-center items-center order-first md:order-last mb-6 md:mb-0"
+          >
+            <div className="relative">
+              {/* Decorative frames */}
+              <div className="absolute -inset-4 border border-orange-500/20" />
+              <div className="absolute -inset-8 border border-orange-500/8" />
+
+              {/* Photo box */}
+              <div className="w-52 h-64 md:w-80 md:h-[420px] bg-zinc-950 border border-zinc-800 overflow-hidden relative">
+                <img
+                  src="/me.png"
+                  alt="Mbunabo John Chukwuemeka"
+                  className="w-full h-full object-cover object-top"
+                />
+                {/* Bottom accent bar */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-orange-500" />
+              </div>
+
+              {/* Floating Lagos badge */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+                className="absolute -bottom-5 -right-5 bg-black border border-orange-500/30 px-4 py-2.5 shadow-xl"
+              >
+                <p className="text-orange-400 font-bold text-xs tracking-wider">🇳🇬 Lagos, Nigeria</p>
+              </motion.div>
+
+              {/* Available dot */}
+              <div className="absolute -top-3 -left-3 bg-black border border-orange-500/30 px-3 py-1.5 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                <span className="text-zinc-400 text-xs font-bold">Available</span>
+              </div>
+            </div>
+          </motion.div>
+          
           {/* ── Text ── */}
           <div>
             <motion.p
@@ -119,46 +159,6 @@ export default function Hero({ setActive }: HeroProps) {
               </button>
             </motion.div>
           </div>
-
-          {/* ── Photo / Avatar ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden md:flex justify-center items-center"
-          >
-            <div className="relative">
-              {/* Decorative frames */}
-              <div className="absolute -inset-4 border border-orange-500/20" />
-              <div className="absolute -inset-8 border border-orange-500/8" />
-
-              {/* Photo box */}
-              <div className="w-80 h-[420px] bg-zinc-950 border border-zinc-800 overflow-hidden relative">
-                <img
-                  src="/me.png"
-                  alt="Mbunabo John Chukwuemeka"
-                  className="w-full h-full object-cover object-top"
-                />
-                {/* Bottom accent bar */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-orange-500" />
-              </div>
-
-              {/* Floating Lagos badge */}
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-                className="absolute -bottom-5 -right-5 bg-black border border-orange-500/30 px-4 py-2.5 shadow-xl"
-              >
-                <p className="text-orange-400 font-bold text-xs tracking-wider">🇳🇬 Lagos, Nigeria</p>
-              </motion.div>
-
-              {/* Available dot */}
-              <div className="absolute -top-3 -left-3 bg-black border border-orange-500/30 px-3 py-1.5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
-                <span className="text-zinc-400 text-xs font-bold">Available</span>
-              </div>
-            </div>
-          </motion.div>
         </div>
 
         {/* Scroll indicator */}

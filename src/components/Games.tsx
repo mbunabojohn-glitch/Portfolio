@@ -15,7 +15,7 @@ const GAMES: { id: Game; title: string; desc: string; emoji: string }[] = [
 export default function Games() {
   const [active, setActive] = useState<Game>(null);
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
   const { scores, updateTicTacToe, updateCatchBug, updateSnake, resetScores } = useScores();
 
   return (
@@ -24,12 +24,12 @@ export default function Games() {
 
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, x: -60 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16"
-        >
+            ref={ref}
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mb-16"
+          >
           <p className="text-orange-500 font-bold text-xs tracking-[0.4em] uppercase mb-4 flex items-center gap-3">
             <span className="inline-block w-8 h-px bg-orange-500" />
             03 / Games
@@ -44,14 +44,14 @@ export default function Games() {
         </motion.div>
 
         {/* Game selector cards */}
-        <div className="grid md:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           {GAMES.map((g, i) => (
             <motion.button
               key={g.id}
-              initial={{ opacity: 0, x: i % 3 === 0 ? -60 : i % 3 === 2 ? 60 : 0 }}
+              initial={{ opacity: 0, x: i % 3 === 0 ? -30 : i % 3 === 2 ? 30 : 0 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
               onClick={() => setActive(active === g.id ? null : g.id)}
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.97 }}

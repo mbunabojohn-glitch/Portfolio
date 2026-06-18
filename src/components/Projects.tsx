@@ -4,13 +4,13 @@ import { PROJECTS } from "../data";
 
 function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: -60 }}
+      initial={{ opacity: 0, x: -30 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: delay * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay: delay * 0.1, ease: "easeOut" }}
     >
       {children}
     </motion.div>
@@ -39,15 +39,15 @@ export default function Projects() {
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {PROJECTS.map((project, i) => (
             <motion.article
               key={project.title}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -8, scale: 1.01 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
+              whileHover={{ y: -5 }}
               className="group border border-zinc-900 hover:border-orange-500/50 bg-zinc-950 overflow-hidden transition-all duration-300 flex flex-col shadow-lg shadow-transparent hover:shadow-orange-500/10"
             >
               {/* Thumbnail */}

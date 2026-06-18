@@ -15,3 +15,15 @@
     font-weight: 900;
   }
 }
+
+@layer utilities {
+  .animate-smooth {
+    will-change: transform, opacity;
+  }
+}
+
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

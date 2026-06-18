@@ -60,12 +60,12 @@ export default function Contact() {
     <section id="contact" className="py-32 bg-[#050505] relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
 
-      <div ref={ref} className="max-w-3xl mx-auto px-6 text-center">
+      <div ref={ref} className="max-w-3xl mx-auto px-4 md:px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
           <p className="text-orange-500 font-bold text-xs tracking-[0.4em] uppercase mb-4 flex items-center justify-center gap-3">
             <span className="inline-block w-8 h-px bg-orange-500" />
             04 / Contact
@@ -83,9 +83,9 @@ export default function Contact() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-left"
         >
           <div className="space-y-4 mb-6">

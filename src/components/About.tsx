@@ -3,17 +3,17 @@ import { motion, useInView } from "framer-motion";
 import { SKILLS } from "../data";
 
 const slideLeft = {
-  hidden: { opacity: 0, x: -60 },
+  hidden: { opacity: 0, x: -30 },
   visible: (i = 0) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, delay: i * 0.06, ease: "easeOut" },
   }),
 };
 
 function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-40px", amount: 0.1 });
   return (
     <motion.div
       ref={ref}
@@ -54,13 +54,13 @@ export default function About() {
           </h2>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Bio - slides left */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="space-y-5"
           >
             <p className="text-zinc-400 leading-relaxed font-light">
@@ -112,10 +112,10 @@ export default function About() {
 
           {/* Skills + Stats - slides right */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <h3 className="text-zinc-500 font-bold text-xs tracking-[0.3em] uppercase mb-5">
               Tech Stack
@@ -127,7 +127,7 @@ export default function About() {
                   initial={{ opacity: 0, scale: 0.85 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.04 }}
+                  transition={{ delay: i * 0.03 }}
                   whileHover={{ scale: 1.1, y: -3, borderColor: "rgba(249,115,22,0.7)" }}
                   className="px-3 py-1.5 text-xs font-semibold text-zinc-300 border border-zinc-800 bg-zinc-900/50 cursor-default transition-all duration-300"
                 >
