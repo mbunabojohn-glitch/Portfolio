@@ -22,7 +22,7 @@ export default function Games() {
     <section id="games" className="py-32 bg-black relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -30 }}

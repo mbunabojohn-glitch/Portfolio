@@ -3,7 +3,6 @@ import { SnakeDir } from "../../types";
 
 const COLS = 20;
 const ROWS = 14;
-const CELL = 18;
 
 interface Pos { x: number; y: number }
 
@@ -35,8 +34,24 @@ export default function SnakeGame({ highScore, onScore }: Props) {
   const [score, setScore] = useState(0);
   const [dead, setDead] = useState(false);
   const [newRecord, setNewRecord] = useState(false);
+  const [cellSize, setCellSize] = useState(18);
+  const containerRef = useRef<HTMLDivElement>(null);
   const dirRef = useRef<SnakeDir>("RIGHT");
   const scoreRef = useRef(0);
+
+  // Calculate cell size on resize
+  useEffect(() => {
+    const calculateSize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.clientWidth;
+        const newCellSize = Math.floor(containerWidth / COLS);
+        setCellSize(newCellSize);
+      }
+    };
+    calculateSize();
+    window.addEventListener('resize', calculateSize);
+    return () => window.removeEventListener('resize', calculateSize);
+  }, []);
 
   // Keyboard controls
   useEffect(() => {
@@ -120,51 +135,68 @@ export default function SnakeGame({ highScore, onScore }: Props) {
       </div>
 
       {/* Board */}
-      <div
-        className="relative mx-auto border border-zinc-800 bg-zinc-950 overflow-hidden"
-        style={{ width: COLS * CELL, height: ROWS * CELL }}
-      >
-        {/* Food */}
+      <div className="flex justify-center">
         <div
-          className="absolute flex items-center justify-center text-sm"
-          style={{ width: CELL, height: CELL, left: food.x * CELL, top: food.y * CELL }}
+          ref={containerRef}
+          className="relative border border-zinc-800 bg-zinc-950 overflow-hidden"
+          style={{ 
+            width: 'min(90vw, 400px)', 
+            height: cellSize * ROWS
+          }}
         >
-          🍎
-        </div>
-
-        {/* Snake segments */}
-        {snake.map((seg, i) => (
+          {/* Food */}
           <div
-            key={`${seg.x}-${seg.y}-${i}`}
-            className={`absolute transition-none ${i === 0 ? "bg-orange-500" : "bg-orange-500/40"}`}
-            style={{ width: CELL - 1, height: CELL - 1, left: seg.x * CELL, top: seg.y * CELL }}
-          />
-        ))}
-
-        {/* Overlay */}
-        {!playing && (
-          <div className="absolute inset-0 bg-black/92 flex flex-col items-center justify-center gap-3">
-            {dead && (
-              <div className="text-center">
-                <p className="text-red-400 font-black text-2xl mb-1">{score}</p>
-                {newRecord && (
-                  <p className="text-yellow-400 text-xs font-bold tracking-widest mb-2">
-                    🏆 NEW HIGH SCORE!
-                  </p>
-                )}
-              </div>
-            )}
-            <button
-              onClick={start}
-              className="bg-orange-500 text-black font-bold text-xs px-7 py-3 hover:bg-orange-400 tracking-widest uppercase transition-colors"
-            >
-              {dead ? "Try Again" : "Start Snake"}
-            </button>
-            {!dead && (
-              <p className="text-zinc-600 text-xs">Eat 🍎 · Don't hit the walls</p>
-            )}
+            className="absolute flex items-center justify-center"
+            style={{ 
+              width: cellSize, 
+              height: cellSize, 
+              left: food.x * cellSize, 
+              top: food.y * cellSize,
+              fontSize: `${Math.max(cellSize * 0.7, 12)}px`
+            }}
+          >
+            🍎
           </div>
-        )}
+
+          {/* Snake segments */}
+          {snake.map((seg, i) => (
+            <div
+              key={`${seg.x}-${seg.y}-${i}`}
+              className={`absolute transition-none ${i === 0 ? "bg-orange-500" : "bg-orange-500/40"}`}
+              style={{ 
+                width: cellSize - 1, 
+                height: cellSize - 1, 
+                left: seg.x * cellSize, 
+                top: seg.y * cellSize 
+              }}
+            />
+          ))}
+
+          {/* Overlay */}
+          {!playing && (
+            <div className="absolute inset-0 bg-black/92 flex flex-col items-center justify-center gap-3">
+              {dead && (
+                <div className="text-center">
+                  <p className="text-red-400 font-black text-2xl mb-1">{score}</p>
+                  {newRecord && (
+                    <p className="text-yellow-400 text-xs font-bold tracking-widest mb-2">
+                      🏆 NEW HIGH SCORE!
+                    </p>
+                  )}
+                </div>
+              )}
+              <button
+                onClick={start}
+                className="bg-orange-500 text-black font-bold text-xs px-7 py-3 hover:bg-orange-400 tracking-widest uppercase transition-colors"
+              >
+                {dead ? "Try Again" : "Start Snake"}
+              </button>
+              {!dead && (
+                <p className="text-zinc-600 text-xs">Eat 🍎 · Don't hit the walls</p>
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Mobile d-pad */}

@@ -161,14 +161,14 @@ export default function Contact() {
           </div>
 
           {/* Social links */}
-          <div className="flex justify-center gap-8 mt-10">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mt-10">
             {SOCIALS.map(({ label, url, icon, display }) => (
               <a
                 key={label}
                 href={url}
                 target={url.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-orange-400 transition-colors flex items-center gap-2"
+                className="text-zinc-400 hover:text-orange-400 transition-colors flex items-center justify-center gap-2"
               >
                 {icon === "github" && (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

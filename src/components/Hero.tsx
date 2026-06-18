@@ -46,7 +46,7 @@ export default function Hero({ setActive }: HeroProps) {
 
       <motion.div
         style={{ y }}
-        className="relative z-10 max-w-6xl mx-auto px-6 w-full pt-28 pb-16"
+        className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 w-full pt-28 pb-16"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* ── Photo / Avatar ── */}
@@ -142,18 +142,18 @@ export default function Hero({ setActive }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex gap-4 flex-wrap"
+              className="flex flex-col sm:flex-row gap-4"
             >
               <button
                 onClick={() => setActive("projects")}
-                className="px-8 py-3.5 bg-orange-500 text-black font-bold text-xs tracking-[0.2em] uppercase hover:bg-orange-400 transition-colors duration-200 flex items-center gap-2"
+                className="px-6 py-3.5 bg-orange-500 text-black font-bold text-xs tracking-[0.2em] uppercase hover:bg-orange-400 transition-colors duration-200 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 View Work
                 <span className="text-base">→</span>
               </button>
               <button
                 onClick={() => setActive("contact")}
-                className="px-8 py-3.5 border border-orange-500/40 text-orange-400 font-bold text-xs tracking-[0.2em] uppercase hover:border-orange-500 hover:bg-orange-500/5 transition-all duration-200"
+                className="px-6 py-3.5 border border-orange-500/40 text-orange-400 font-bold text-xs tracking-[0.2em] uppercase hover:border-orange-500 hover:bg-orange-500/5 transition-all duration-200 w-full sm:w-auto"
               >
                 Hire Me
               </button>

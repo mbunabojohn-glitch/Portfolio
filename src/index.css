@@ -8,6 +8,10 @@
     background: #000000;
     color: #fff;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  html {
+    overflow-x: hidden;
   }
 
   h1, h2, h3 {

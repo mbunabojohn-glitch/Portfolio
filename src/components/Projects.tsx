@@ -22,7 +22,7 @@ export default function Projects() {
     <section id="projects" className="py-32 bg-[#050505] relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <Reveal>
           <p className="text-orange-500 font-bold text-xs tracking-[0.4em] uppercase mb-4 flex items-center gap-3">
             <span className="inline-block w-8 h-px bg-orange-500" />
@@ -100,12 +100,12 @@ export default function Projects() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 bg-orange-500 text-black font-bold text-xs tracking-widest uppercase hover:bg-orange-400 transition-colors"
+                    className="px-5 py-2.5 bg-orange-500 text-black font-bold text-xs tracking-widest uppercase hover:bg-orange-400 transition-colors text-center"
                   >
                     View Live →
                   </a>
@@ -113,7 +113,7 @@ export default function Projects() {
                   href={project.codeUrl}
                   target={project.codeUrl === "#" ? undefined : "_blank"}
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 border border-zinc-800 text-zinc-400 font-bold text-xs tracking-widest uppercase hover:border-zinc-600 hover:text-white transition-all"
+                  className="px-5 py-2.5 border border-zinc-800 text-zinc-400 font-bold text-xs tracking-widest uppercase hover:border-zinc-600 hover:text-white transition-all text-center"
                 >
                   {project.codeUrl === "#" ? "Private Repo" : "Source"}
                 </a>

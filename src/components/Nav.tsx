@@ -30,7 +30,7 @@ export default function Nav({ active, setActive }: NavProps) {
           : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-5 flex items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => setActive("home")}
@@ -103,7 +103,7 @@ export default function Nav({ active, setActive }: NavProps) {
             transition={{ duration: 0.25 }}
             className="md:hidden bg-black/98 backdrop-blur-xl border-t border-orange-500/10"
           >
-            <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+            <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col gap-1">
               {LINKS.map((link) => (
                 <button
                   key={link}

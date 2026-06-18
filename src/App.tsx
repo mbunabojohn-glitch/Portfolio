@@ -56,7 +56,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black" style={{ fontFamily: "'Mulish', sans-serif" }}>
+    <div className="min-h-screen bg-black overflow-x-hidden" style={{ fontFamily: "'Mulish', sans-serif" }}>
       <Nav active={activeSection} setActive={setActiveSection} />
 
       <main>
