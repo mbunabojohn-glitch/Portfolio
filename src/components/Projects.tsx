@@ -101,14 +101,16 @@ export default function Projects() {
 
                 {/* Links */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-5 py-2.5 bg-orange-500 text-black font-bold text-xs tracking-widest uppercase hover:bg-orange-400 transition-colors text-center"
-                  >
-                    View Live →
-                  </a>
+                  {project.liveUrl && project.liveUrl !== "#" && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 bg-orange-500 text-black font-bold text-xs tracking-widest uppercase hover:bg-orange-400 transition-colors text-center"
+                    >
+                      View Live →
+                    </a>
+                  )}
                   <a
                   href={project.codeUrl}
                   target={project.codeUrl === "#" ? undefined : "_blank"}

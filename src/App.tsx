@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import Certificates from "./components/Certificates";
 import Games from "./components/Games";
 import Contact from "./components/Contact";
 
@@ -38,7 +39,7 @@ export default function App() {
 
   // Sync active section on scroll
   useEffect(() => {
-    const sections: Section[] = ["home", "about", "projects", "games", "contact"];
+    const sections: Section[] = ["home", "about", "projects", "certificates", "games", "contact"];
     const observers: IntersectionObserver[] = [];
 
     sections.forEach((sec) => {
@@ -68,6 +69,9 @@ export default function App() {
         </div>
         <div id="projects">
           <Projects />
+        </div>
+        <div id="certificates">
+          <Certificates />
         </div>
         <div id="games">
           <Games />

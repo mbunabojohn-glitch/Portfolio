@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Section } from "../types";
 
-const LINKS: Section[] = ["home", "about", "projects", "games", "contact"];
+const LINKS: Section[] = ["home", "about", "projects", "certificates", "games", "contact"];
 
 interface NavProps {
   active: Section;

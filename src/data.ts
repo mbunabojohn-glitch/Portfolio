@@ -1,4 +1,14 @@
-import { Project } from "./types";
+import { Project, Certificate } from "./types";
+
+export const CERTIFICATES: Certificate[] = [
+  {
+    title: "School of Engineering Diploma",
+    provider: "PluralCode Academy",
+    issued: "May 11, 2026",
+    description: "Professional Diploma in Full-Stack Software Development",
+    file: "/cert-pluralcode-2026.pdf",
+  },
+];
 
 export const PROJECTS: Project[] = [
   {
@@ -39,6 +49,16 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://pivot-grid-jjjz.vercel.app/",
     codeUrl: "https://github.com/mbunabojohn-glitch",
     image: "/pivotgrid.png",
+    status: "building",
+  },
+  {
+    title: "AjoBot",
+    description:
+      "WhatsApp-based tracker for rotating savings groups (ajo/esusu), built for AIJ Group and in pilot testing. Handles group setup, member contributions through dedicated virtual accounts, automated reminders, and payouts with an admin review window. Includes an automated test suite.",
+    tech: ["Node.js", "Express", "Supabase", "Paystack", "WhatsApp Cloud API", "Render"],
+    liveUrl: "#",
+    codeUrl: "#",
+    image: "/ajobot.png",
     status: "building",
   },
 ];
